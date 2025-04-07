@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast</title>
+
+    <link rel="stylesheet" href="/styles/main.css" />
+    <!--NB: The "styles" folder containing the css file needs
+        to be placed under a folder named "public". And this "public"
+        folder needs to be located directly under the root directory.
+        For e.g.:
+
+        |sg_weather (root directory)
+        --|public
+        ----|styles
+        ------|main.css
+    -->
+</head>
+
+<!--OVERALL LAYOUT
+    ==============
+    The webpage uses the layout structure shown below.
+    The main "page-container" div is a grid divided into
+    3 rows and 2 columns, with the header and footer
+    divs each taking the space of 2 columns.
+
+    =====================================================
+    header (containing title and subtitle)
+    =====================================================
+    sidebar   |region-container                         |
+    (info     |                                         |
+    here)     |                                         |
+              |                                         |
+    =====================================================
+    footer
+    =====================================================
+
+    REGION-CONTAINER
+    ================
+    The "region-container" div is further divided into
+    a 3 x 3 grid as shown below, with the Central, North,
+    East, South and West cards displaying the forecasts
+    for the respective regions. The NW, NE, SW and SE
+    cards are just for easy alignment of the other
+    cards, and do not contain information.
+    
+    Using media queries: On a screen wider than 40rem,
+    the "general-card" div will be hidden, with the NW
+    card taking its place for alignment. But if the screen
+    is less than or equal to 40rem wide, the sidebar will
+    be hidden, the "general-card" along with the Central,
+    North, East, South and West cards will be displayed
+    in a single column, with the NW, NE, SW and SE cards
+    hidden.
+
+    |NW/General     |North          |NE             |
+    |               |               |               |
+    |               |               |               |
+    =================================================
+    |West           |Central        |East           |
+    |               |               |               |
+    |               |               |               |
+    =================================================
+    |SW             |South          |SE             |
+    |               |               |               |
+    |               |               |               |
+*/-->
+
+<body>
+
+  <div id="page-container">
+
+      <div id="header">
+          <div id="header-title">24-HR WEATHER FORECAST</div>
+          <div id="header-subtitle">Today in Singapore</div>
+      </div>
+
+      <!--NB: For more information regarding the "forecast" JS object
+      used below, pls refer to "index.js" under the root directory -->
+
+      <div id="sidebar">
+          <div id="sidebar-title" class="sidebar-item">GENERAL</div>
+          <div class="sidebar-item general-forecast">
+            <%=forecast.generalForecast%>
+          </div>
+          <div class="sidebar-item general-temperature-range">
+            <%=forecast.generalTemperatureLow%>&degC &#8211 <%=forecast.generalTemperatureHigh%>&degC
+          </div>
+          <div class="sidebar-item general-humidity-range">
+            Humidity: <%=forecast.generalHumidityLow%>% &#8211 <%=forecast.generalHumidityHigh%>%
+          </div>
+          <div class="sidebar-item timestamp">
+            Updated: <%=forecast.timestamp%>
+          </div>
+      </div>
+
+      <div id="region-container">
+
+          <div id="general-card">
+            <div id="general-card-title" class="general-card-item">GENERAL</div>
+              <div class="general-card-item general-forecast">
+                <%=forecast.generalForecast%>
+              </div>
+              <div class="general-card-item general-temperature-range">
+                <%=forecast.generalTemperatureLow%>&degC &#8211 <%=forecast.generalTemperatureHigh%>&degC
+              </div>
+              <div class="general-card-item general-humidity-range">
+                Humidity: <%=forecast.generalHumidityLow%>% &#8211 <%=forecast.generalHumidityHigh%>%
+              </div>
+              <div class="general-card-item timestamp">
+                Updated: <%=forecast.timestamp%>
+              </div>
+          </div>
+
+          <div id="region-northwest"></div>
+
+          <div id="region-north" class="region-card">
+              <div class="region-card-title">NORTH</div>
+              <table class="borderless-table">
+                <tr>
+                  <th>From</th>
+                  <th>To</th>
+                  <th>Forecast</th>
+                </tr>
+                <% for (let i = 0; i < 3; i++) { %>
+                  <tr>
+                    <td><%= forecast.timePeriodStart[i] %></td>
+                    <td><%= forecast.timePeriodEnd[i] %></td>
+                    <td><%= forecast.northForecast[i] %></td>
+                  </tr>
+                <% } %>
+              </table>
+          </div>
+
+          <div id="region-northeast"></div>
+
+          <div id="region-west" class="region-card">
+              <div class="region-card-title">WEST</div>
+              <table class="borderless-table">
+                  <tr>
+                      <th>From</th>
+                      <th>To</th>
+                      <th>Forecast</th>
+                  </tr>
+                  <% for (let i = 0; i < 3; i++) { %>
+                    <tr>
+                      <td><%= forecast.timePeriodStart[i] %></td>
+                      <td><%= forecast.timePeriodEnd[i] %></td>
+                      <td><%= forecast.westForecast[i] %></td>
+                    </tr>
+                  <% } %>
+              </table>
+          </div>
+
+          <div id="region-central" class="region-card">
+              <div class="region-card-title">CENTRAL</div>
+              <table class="borderless-table">
+                  <tr>
+                      <th>From</th>
+                      <th>To</th>
+                      <th>Forecast</th>
+                  </tr>
+                  <% for (let i = 0; i < 3; i++) { %>
+                    <tr>
+                      <td><%= forecast.timePeriodStart[i] %></td>
+                      <td><%= forecast.timePeriodEnd[i] %></td>
+                      <td><%= forecast.centralForecast[i] %></td>
+                    </tr>
+                  <% } %>
+              </table>
+          </div>
+          
+          <div id="region-east" class="region-card">
+              <div class="region-card-title">EAST</div>
+              <table class="borderless-table">
+                  <tr>
+                      <th>From</th>
+                      <th>To</th>
+                      <th>Forecast</th>
+                  </tr>
+                  <% for (let i = 0; i < 3; i++) { %>
+                    <tr>
+                      <td><%= forecast.timePeriodStart[i] %></td>
+                      <td><%= forecast.timePeriodEnd[i] %></td>
+                      <td><%= forecast.eastForecast[i] %></td>
+                    </tr>
+                  <% } %>
+              </table>
+          </div>
+          
+          <div id="region-southwest"></div>
+
+          <div id="region-south" class="region-card">
+              <div class="region-card-title">SOUTH</div>
+              <table class="borderless-table">
+                  <tr>
+                      <th>From</th>
+                      <th>To</th>
+                      <th>Forecast</th>
+                  </tr>
+                  <% for (let i = 0; i < 3; i++) { %>
+                    <tr>
+                      <td><%= forecast.timePeriodStart[i] %></td>
+                      <td><%= forecast.timePeriodEnd[i] %></td>
+                      <td><%= forecast.southForecast[i] %></td>
+                    </tr>
+                  <% } %>
+              </table>
+          </div>
+          
+          <div id="region-southeast"></div>
+
+      </div>
+
+      <div id="footer">
+          <div id="footer-item">Developed by prog4321 | View source code on GitHub <a href="https://github.com/prog4321/sg_weather" target="_blank">here</a></div>
+      </div>
+  </div>
+
+</body>
+</html>

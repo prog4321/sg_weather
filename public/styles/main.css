@@ -1,0 +1,286 @@
+body {
+  margin:0;
+  background-color: rgb(110, 177, 218);
+  font-family:Verdana, Geneva, Tahoma, sans-serif
+}
+
+#page-container {
+  display:grid;
+  grid-template-rows: 0.1fr auto 0.1fr;
+  grid-template-columns: 13.5rem auto;
+
+  /* Set the height to 100 viewport height so that the
+  whole webpage shows up neatly by default */
+  height: 100vh;
+
+  background-color: rgb(110, 177, 218);
+}
+
+#header {
+  grid-column-start: 1;
+  grid-column-end: -1;
+
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+
+  background-color: rgb(227, 246, 255);
+  z-index: 1;
+}
+
+#header-title {
+  color: rgb(16, 16, 147);
+  font-size: 1.25rem;
+  padding-top: 0.4rem;
+  padding-left: 0.5rem;
+  padding-bottom: 0.25rem;
+}
+
+#header-subtitle {
+  color: rgb(64, 71, 71);
+  font-size: 0.85rem;
+  font-style: italic;
+  padding-left: 0.55rem;
+  padding-bottom: 0.6rem;
+}
+
+#region-container {
+  display:grid;
+  grid-template-rows:  1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  background-color: rgb(110, 177, 218);
+  margin: 1.5rem;
+  gap: 1.7rem;
+
+  /*Source for the Singapore SVG map:
+  https://www.amcharts.com/svg-maps/?map=singapore
+
+  NB: The "images" folder containing the SVG file needs
+  to be placed under a folder named "public". And this "public"
+  folder needs to be located directly under the root directory.
+  For e.g.:
+
+  |sg_weather (root directory)
+  --|public
+  ----|images
+  ------|singaporeLow.svg */
+
+  background-image: url("../images/singaporeLow.svg");
+  background-repeat: no-repeat;
+  background-size: 95% 95%;
+  background-position: 48%;
+  /* We set the background-size to "contain" to preserve the
+  ratio of the SVG, to prevent image distortion */
+  background-size: contain;
+}
+
+.region-card {
+  display: grid;
+  grid-template-rows: 1.6rem auto;
+  grid-template-columns: 1fr;
+
+  border-radius: 0.5rem;
+  opacity: 0.7;
+}
+
+.region-card:hover {
+  opacity: 1;
+}
+
+.region-card-title {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+
+  color: darkblue;
+  font-size: 0.88rem;
+  background-color: rgb(233, 254, 254);
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+#general-card {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: rgb(227, 246, 255);
+  border-radius: 0.5rem;
+  min-width: 13.5rem;
+}
+
+#general-card-title {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+#sidebar {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(227, 246, 255);
+}
+
+.sidebar-item,.general-card-item {
+  display:flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#sidebar-title, #general-card-title {
+  color: rgb(64, 71, 71);
+  font-size: 1rem;
+  background-color: lightgrey;
+  padding-top: 0.45rem;
+  padding-bottom: 0.45rem;
+}
+
+.general-forecast {
+  color: darkred;
+  font-size: 1.25rem;
+  padding-top: 1.4rem;
+  padding-bottom: 0.5rem;
+  text-align: center;
+}
+
+.general-temperature-range {
+  color: rgb(249, 67, 0);
+  font-size: 1.6rem;
+  padding-top: 0.7rem;
+  padding-bottom: 0.8rem;
+  text-align: center;
+}
+
+.general-humidity-range {
+  color: darkred;
+  font-size: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.8rem;
+  text-align: center;
+}
+
+.timestamp {
+  color: rgb(64, 71, 71);
+  font-size: 0.7rem;
+  font-style: italic;
+  padding-top: 0.5rem;
+  padding-bottom: 0.8rem;
+  text-align: center;
+}
+
+/* Formatting to remove the surrounding border for
+the table that contains the regional data */
+th {
+  height: 10%;
+}
+.borderless-table {
+  color: black;
+  font-size: 0.68rem;
+  
+  border: none;
+  border-collapse: collapse;
+  text-align: center;
+  background-color: lightgrey;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+.borderless-table tr th {
+  border-top: none;
+  border-bottom: none;
+}
+.borderless-table td, th {
+  border: solid 0.01rem grey;
+}
+.borderless-table tr:last-child td {
+  border-bottom: none;
+}
+.borderless-table tr td:first-child {
+  border-left: none;
+}
+.borderless-table tr td:last-child {
+  border-right: none;
+}
+.borderless-table tr th:first-child {
+  border-left: none;
+}
+.borderless-table tr th:last-child {
+  border-right: none;
+}
+.borderless-table td {
+  padding: 0.2rem;
+}
+
+#footer {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background-color: lightgrey;
+  grid-column-start: 1;
+  grid-column-end: -1;
+}
+
+#footer-item{
+  color: rgb(64, 71, 71);
+  font-size: 0.75rem;
+  padding: 0.38rem;
+  line-height: 1.1rem;
+}
+
+@media (max-width: 40rem) {
+  #page-container {
+    grid-template-rows: 0.1fr auto 0.1fr;
+    grid-template-columns: auto;
+  }
+
+  #header, #footer {
+    align-items: center;
+  }
+
+  #sidebar {
+    display: none;
+      }
+  
+  #region-container {
+    display:flex;
+    flex-direction: column;
+    background-image: none;
+    align-items: center;
+    margin: 1rem;
+    gap: 1.3rem;
+  }
+
+  #region-northwest, #region-northeast, #region-southwest, #region-southeast {
+    display: none;
+  }
+
+  #general-card {
+    order: 1;
+  }
+
+  #region-central {
+    order: 2;
+  }
+
+  #region-north {
+    order: 3;
+  }
+
+  #region-east {
+    order: 4;
+  }
+
+  #region-south {
+    order: 5;
+  }
+
+  #region-west {
+    order: 6;
+  }
+}
+
+@media (min-width: 40rem) {
+  #general-card {
+    display: none;
+  }
+}
