@@ -11,7 +11,7 @@ On the front-end, an EJS file (views/index.ejs) is used, with a CSS file (public
 
 The server-side code can be found on "index.js" in the root directory.
 
-I have designed the webpage for some responsiveness, and it should render fairly well on most screen and mobile resolutions.
+I have designed the webpage for some responsiveness, and it should render fairly well on a variety of screen resolutions.
 
 The overall architecture is loosely based on what I've learnt in Dr Angela Yu's course, "The Complete Full-Stack Web Development Bootcamp". Fantastic course, by the way!
 
