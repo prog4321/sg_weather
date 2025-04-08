@@ -206,8 +206,11 @@ th {
 .borderless-table tr th:last-child {
   border-right: none;
 }
+.borderless-table th {
+  padding: 0.3rem;
+}
 .borderless-table td {
-  padding: 0.2rem;
+  padding: 0.5rem;
 }
 
 #footer {
@@ -240,6 +243,10 @@ th {
   #sidebar {
     display: none;
       }
+
+  .region-card {
+    grid-template-rows: 2rem auto;
+  }
   
   #region-container {
     display:flex;
@@ -248,6 +255,16 @@ th {
     align-items: center;
     margin: 1rem;
     gap: 1.3rem;
+  }
+
+  .region-card-title {
+    font-size: 1rem;
+    padding-top: 0.45rem;
+    padding-bottom: 0.45rem;
+  }
+
+  .borderless-table {
+    font-size: 1rem;
   }
 
   #region-northwest, #region-northeast, #region-southwest, #region-southeast {

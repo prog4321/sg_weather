@@ -77,7 +77,7 @@ function formatDateTime(entry, isRegionDateTime) {
   var month = date.toLocaleString('default', { month: 'short' })
 
   var hour = date.toLocaleString('default', { hour: 'numeric' })
-  var ampm = hour.slice(-2);
+  var ampm = hour.slice(-2).toLowerCase();
   
   if (hour.length == 4) {
     hour = hour.slice(0, 1);
