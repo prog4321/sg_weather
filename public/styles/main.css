@@ -207,10 +207,10 @@ th {
   border-right: none;
 }
 .borderless-table th {
-  padding: 0.3rem;
+  padding: 0.2rem;
 }
 .borderless-table td {
-  padding: 0.5rem;
+  padding: 0.35rem;
 }
 
 #footer {
@@ -264,7 +264,7 @@ th {
   }
 
   .borderless-table {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 
   #region-northwest, #region-northeast, #region-southwest, #region-southeast {
