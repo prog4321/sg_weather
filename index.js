@@ -87,9 +87,7 @@ function formatDateTime(entry, isRegionDateTime) {
 
   if (isRegionDateTime) {
     time = hour + ampm;
-    if (time === "12am") {
-      time = "Midnight";
-    } else if (time === "12pm") {
+    if (time === "12pm") {
       time = "Noon";
     }
   } else {
