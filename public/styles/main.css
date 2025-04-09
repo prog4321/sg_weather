@@ -240,6 +240,10 @@ th {
     align-items: center;
   }
 
+  #header-title {
+    padding-top: 0.47rem;
+  }
+
   #sidebar {
     display: none;
       }
