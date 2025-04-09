@@ -73,7 +73,7 @@ function formatDateTime(entry, isRegionDateTime) {
 
   entry = entry.slice(0, 10) + " " + entry.slice(11, 19);
   const date = new Date(entry);
-  var day = date.toLocaleString('default', { day: '2-digit' })
+  var day = date.toLocaleString('default', { day: 'numeric' })
   var month = date.toLocaleString('default', { month: 'short' })
 
   var hour = date.toLocaleString('default', { hour: 'numeric' })
