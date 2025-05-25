@@ -2,8 +2,6 @@
 
 Please try out the webpage here: https://sg-weather.onrender.com
 
-#### NB: The initial load of the webpage may take a little while as I am on the free tier of render.com.
-
 It uses Node.js/Express.js/Axios to retrieve information via the following realtime API on data.gov.sg:<br>
 <a href="https://data.gov.sg/datasets?formats=API&sort=relevancy&page=1&resultId=d_ce2eb1e307bda31993c533285834ef2b">24-hour weather forecast</a>
 
